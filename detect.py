@@ -2,7 +2,7 @@ import os.path as osp
 import argparse
 from detect_lib.path_utils import *
 from detect_lib.model import YOLO_Detector
-
+import time
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -22,7 +22,10 @@ if __name__ == "__main__":
     detector = YOLO_Detector(device=args.device)
 
     for video_path in all_videos_path:
+        s = time.time()
         video_dir, video_name = osp.split(video_path)
         frame_save_dir = create_path(osp.join(video_dir, video_name[:video_name.rfind(".")]))
-        print(f"read video :{video_path} -> {frame_save_dir}")
+        print(f"read video : {video_path} -> {frame_save_dir}")
         detector(video_path, dst_dir = frame_save_dir, batch_size = args.batch_size)
+        e = time.time()
+        print(f"consuming : {e-s:.4f} sec")
