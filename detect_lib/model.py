@@ -41,9 +41,9 @@ class YOLO_Detector():
             paths = frame_names, 
             MAX_Thread_num = os.cpu_count()//2 
         )
-        
         for idx, ann in enumerate(self.detect_bbox(frame_buf, frame_names)):
             fname = frame_names[idx]
+            #cv2.imwrite(fname, frame_buf[idx])
             with open(f"{fname[:fname.rfind('.')]}.json", "w+") as jf:
                 json.dump(ann, jf, indent=4, ensure_ascii=False)
     
