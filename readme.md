@@ -6,6 +6,7 @@ Using ```yolov5x``` to detect videos and then write all the frames and detected 
 
 ## Environment:
 - python3
+- Requirments for the third-party packages : 
     - torch
     - ultralytics
     - opencv-python
