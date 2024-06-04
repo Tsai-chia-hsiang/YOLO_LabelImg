@@ -2,7 +2,7 @@
 
 Using ```yolov5x``` to detect videos and then write all the frames and detected results in CreateML notation form.
 
-- It is for LabelImg : https://github.com/tzutalin/labelImg
+- It is for LabelImg : [https://github.com/tzutalin/labelImg](https://pypi.org/project/labelImg/)
 
 ## Environment:
 - python3
