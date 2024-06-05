@@ -106,11 +106,10 @@ converted annotation for each object :
 This conversion will copy the file structure from `--staff_annotation_root` to `--to_root`, and it ensures all annotation files retain the same prefix as their corresponding frames.
 
 - Please note that we just adding serial_num_track_id to yolo detection labels format
-    - If you want to use this for training YOLO, please remove the `serial_num_track_id` at the end using other method. 
-- About the corresponding images, we don't copy from `--staff_annotation_root` to `--to_root`, so you need to move/copy those frames by your own if you want to train YOLO detector.
+    - If you want to use this to train YOLO detector, please remove the `serial_num_track_id` at the end of each notation by your own. 
+- About the corresponding images, we don't copy from `--staff_annotation_root` to `--to_root`. Therefore, you will need to move or copy those frames yourself if you want to train the YOLO detector.
 
 Sorry for the inconvenience.
-
 
 E.g. 
 ```
