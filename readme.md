@@ -1,6 +1,6 @@
 # Yolov5 to LabelImg notation
 
-Using ```yolov5x``` to detect videos and then write all the frames and detected results in CreateML notation form.
+Using ```yolov5x``` to detect videos and then write all the frames and detected results in CreateML format.
 
 - It is for [LabelImg](https://pypi.org/project/labelImg/)
 
