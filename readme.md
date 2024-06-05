@@ -30,7 +30,9 @@ Arguments:
     - e.g. cpu, cuda:0, cuda:1, ..., default is cuda:0
 
 E.g.
-```python detect.py --video_root /root/to/a/day/ --batch_size 180 --device cuda:0```
+```
+python detect.py --video_root /root/to/a/day/ --batch_size 180 --device cuda:0
+```
 
 It will generate a folder named according to video name for each video under ```/root/to/a/day/```
 
@@ -95,9 +97,8 @@ python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 --to_root ./serial_number_trackid/ --imgsz height width
 
 converted annotation for each object : 
-```
-0 normalized_center_x normalized_center_y normalized_width normalized_height serial_num_track_id
-```
+
+`0 normalized_center_x normalized_center_y normalized_width normalized_height serial_num_track_id`
 
 This conversion will copy the file structure from `--staff_annotation_root` to `--to_root`, and it ensures all annotation files retain the same prefix as their corresponding frames.
 
@@ -108,7 +109,10 @@ This conversion will copy the file structure from `--staff_annotation_root` to `
 Sorry for the inconvenience.
 
 
-E.g. ```python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/1015/  --imgsz 1080 1920```
+E.g. 
+```
+python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/1015/  --imgsz 1080 1920
+```
 
 Then it will generate the following folders under this root:
 ```
@@ -141,7 +145,10 @@ python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 
 - frame ID starts from 0
 
-E.g. ```python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_mot2d/1015/  --imgsz 1080 1920 --format mot2d```
+E.g. 
+```
+python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_mot2d/1015/  --imgsz 1080 1920 --format mot2d
+```
 
 Then it will generate the following folders under this root:
 ```
