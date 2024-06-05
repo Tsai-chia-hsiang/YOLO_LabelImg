@@ -133,7 +133,7 @@ if __name__ == '__main__':
     for ci in os.listdir(convert_root):
         if os.path.isdir(convert_root/ci):
             
-            # should contain only one subfoler for clip annotations
+            # should contain only one subfolder for clip annotations
             src = Path([f.path for f in os.scandir(convert_root/ci) if f.is_dir()][0])
             
             dst = to_root/ci
