@@ -85,7 +85,10 @@ Then it will generate the following folders under this root:
 └── ...
 ```
 
-# Annotation convert
+## Please use LabelImg with the above CreateML annotation files.
+## The format conversion can be executed ONLY AFTER all staff have finished labeling.
+
+# Format conversion
 
 - Due to implementation constraints, the staff track IDs must remain the same throughout the day.
 - since we only detect and track car ( single class ), the class ID is always 0 for each format
