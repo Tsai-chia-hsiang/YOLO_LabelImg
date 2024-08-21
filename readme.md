@@ -1,47 +1,41 @@
-# Yolov5 to LabelImg notation
+# Ultralytics Yolov10l to LabelImg notation
 
-Using ```yolov5x``` to detect videos and then write all the frames and detected results in CreateML format.
+Using ```yolov10l.pt``` to detect the vehicle-like objects from each frame of the video clips and write all the frames and detected results in __CreateML__ format.
 
-- It is for [LabelImg](https://pypi.org/project/labelImg/)
-
-## Due to implementation constraints, the staff track IDs must remain the same throughout the day.
+- It is for [LabelImg](https://github.com/HumanSignal/labelImg.git)
 
 ## Environment:
-- python3
-- Requirments for the third-party packages : 
-    - torch
-    - ultralytics
-    - opencv-python
-    - tqdm  
 
 ** Recommand running on __Linux__ 
 
 ## Execution:
 
-Arguments:
-- --video_root :
-    - The root of all the videos you want to detect. 
-    - it refers to a day in our case.
-        - it contains all the footage of the cameras collected from that day.
-        - Each camera footage is in a folder that named after the camera ID.
-- --batch_size:
-    - the batch size for yolov5x, default is 180
-- device :
-    - e.g. cpu, cuda:0, cuda:1, ..., default is cuda:0
+- Arguments:
+    - --video_root :
+        - The root of all the videos you want to detect. 
+        - it refers to a day in our case.
+            - it contains all the footage of the cameras collected from that day.
+            - Each camera footage is in a folder that named after the camera ID.
+    - --batch_size:
+        - the number of images for detecting onces, default is 180
+
+- About device:
+
+    - Due to the implementation of Ultralytics, please use ```CUDA_VISIBLE_DEVICES=want_device_id``` to control if don't want use default device (cuda 0) 
 
 E.g.
 ```
-python detect.py --video_root /root/to/a/day/ --batch_size 180 --device cuda:0
+CUDA_VISIBLE_DEVICES=3 python detect.py --video_root /root/to/a/day/ --batch_size 180 
 ```
 
 It will generate a folder named according to video name for each video under ```/root/to/a/day/```
 
 E.g. 
-video_root : ./dataset/1015/ :
+video_root : ./dataset/0925/ :
 ```
 .
 ├──dataset/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   └── c1.mp4
 │    │   ├── cam2/
@@ -56,7 +50,7 @@ Then it will generate the following folders under this root:
 ```
 .
 ├── dataset/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├── c1.mp4
 │    │   │   └── c1/
@@ -86,18 +80,63 @@ Then it will generate the following folders under this root:
 ```
 
 ## Please use LabelImg with the above CreateML annotation files.
+[LabelImg](https://github.com/HumanSignal/labelImg.git)
+
+```
+pip3 install labelImg
+labelImg
+```
+
+- __The staff member's ID must remain consistent throughout their entire corresponding sequences.__
+
 ## The format conversion can be executed ONLY AFTER all staff have finished labeling.
 
 # Format conversion
 
-- Due to implementation constraints, the staff track IDs must remain the same throughout the day.
+- The staff track IDs must remain the same throughout the day.
 - since we only detect and track car ( single class ), the class ID is always 0 for each format
 
 The program ```convert_tid.py``` can convert CreateML notation to :
 
-## YOLO-tid format
+
+## MOT2D format
+```
+python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
+--to_root ./serial_number_trackid/ __--format mot2d__ 
+```
+Please note that frame ID starts from 0 but not 1 for each sequence.
+
+E.g. 
+```
+python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_mot2d/0925/ --format mot2d
+```
+
+Then it will generate the following folders under this root:
+```
+.
+├── dataset_mot2d/
+│    ├── 0925/
+│    │   ├── cam1/
+│    │   │   ├──  c1/
+│    │   │       ├── c1.txt
+│    │   ├── cam2/
+│    │   │   ├── c2/
+│    │   │       ├── c2.txt
+│    │   ├── cam3/
+│    │   │   ├── c3/
+│    │   │       ├── c3.txt
+│    └── ...
+└── ...
+```
+
+Each camera will generate a __MOT2D gt.txt__ format file.
+
+
+## YOLO format
+```
 python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 --to_root ./serial_number_trackid/ --imgsz height width
+```
 
 converted annotation for each object : 
 
@@ -109,18 +148,17 @@ This conversion will copy the file structure from `--staff_annotation_root` to `
     - If you want to use this to train YOLO detector, please remove the `serial_num_track_id` at the end of each notation by your own. 
 - About the corresponding images, we don't copy from `--staff_annotation_root` to `--to_root`. Therefore, you will need to move or copy those frames yourself if you want to train the YOLO detector.
 
-Sorry for the inconvenience.
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/1015/  --imgsz 1080 1920
+python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/0925/  --imgsz 1920 1080
 ```
 
 Then it will generate the following folders under this root:
 ```
 .
 ├── dataset_yolotid/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├──  c1/
 │    │   │       ├── c1_frame1.txt
@@ -140,34 +178,3 @@ Then it will generate the following folders under this root:
 └── ...
 ```
 
-## MOT2D format
-
-python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
---to_root ./serial_number_trackid/ __--format mot2d__ --imgsz height width 
-
-- frame ID starts from 1
-
-E.g. 
-```
-python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_mot2d/1015/  --imgsz 1080 1920 --format mot2d
-```
-
-Then it will generate the following folders under this root:
-```
-.
-├── dataset_mot2d/
-│    ├── 1015/
-│    │   ├── cam1/
-│    │   │   ├──  c1/
-│    │   │       ├── c1.txt
-│    │   ├── cam2/
-│    │   │   ├── c2/
-│    │   │       ├── c2.txt
-│    │   ├── cam3/
-│    │   │   ├── c3/
-│    │   │       ├── c3.txt
-│    └── ...
-└── ...
-```
-
-Each camera will generate a __MOT2D gt.txt__ format file.
