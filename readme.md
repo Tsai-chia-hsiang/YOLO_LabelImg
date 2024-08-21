@@ -145,7 +145,7 @@ Then it will generate the following folders under this root:
 python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 --to_root ./serial_number_trackid/ __--format mot2d__ --imgsz height width 
 
-- frame ID starts from 0
+- frame ID starts from 1
 
 E.g. 
 ```
