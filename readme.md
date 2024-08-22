@@ -7,6 +7,18 @@ Using ```yolov10l.pt``` to detect the vehicle-like objects from each frame of th
 ## Environment:
 
 ** Recommand running on __Linux__ 
+setup:
+
+The suggestion python version is above 3.10
+
+1. install [torch](https://pytorch.org/get-started/locally/)
+2. install [ultralytics](https://docs.ultralytics.com/quickstart/)
+3. addtional packages:
+    - tqdm : pip install tqdm 
+    - opencv-python : pip install opencv-python
+
+
+
 
 ## Execution:
 
