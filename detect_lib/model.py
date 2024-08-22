@@ -88,8 +88,9 @@ class YOLO_Detector():
         if not cap.isOpened():
             print(f"Cannot open video {video_path}")
             return
-        #int(cap.get(cv2.CAP_PROP_FPS))
-        freq = set_sampling_freq(video_fps = wanted_fps) 
+    
+        freq = set_sampling_freq(video_fps = int(cap.get(cv2.CAP_PROP_FPS))) 
+
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         frame_idx = 0
         frame_buf, frame_names = [None]*batch_size, [None]*batch_size
