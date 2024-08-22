@@ -141,23 +141,22 @@ if __name__ == '__main__':
     
     print(prompt)
 
-    for ci in os.listdir(convert_root):
-        if os.path.isdir(convert_root/ci):
-            
+    for r in convert_root.iterdir():
+        if r.is_dir():
             # should contain only one subfolder for clip annotations
-            src = Path([f.path for f in os.scandir(convert_root/ci) if f.is_dir()][0])
-            
-            dst = to_root/ci
-            dst.mkdir(parents=True, exist_ok=True)
-            
-            if args.format == 'yolo':
-                dst = dst/src.name
+            srcs = [f for f in r.iterdir() if f.is_dir()]
+            for src in srcs:
+                ci = src.parts
+                dst = to_root/ci[-2]/ci[-1]
                 dst.mkdir(parents=True, exist_ok=True)
-                print(f"{src}/*.json -> {dst}/*.txt : ")
-            
-            elif args.format == 'mot2d':
-                dst = dst/f'{src.name}.txt'
-                print(f"{src}/*.json -> {dst}")
+                
+                if args.format == 'yolo':
+                    dst.mkdir(parents=True, exist_ok=True)
+                    print(f"{src}/*.json -> {dst}/*.txt : ")
+                
+                elif args.format == 'mot2d':
+                    dst = dst/f'{src.name}.txt'
+                    print(f"{src}/*.json -> {dst}")
 
-            CONVERT_MAP[args.format](src,dst,args.imgsz[0],args.imgsz[1])
+                CONVERT_MAP[args.format](src,dst,args.imgsz[0],args.imgsz[1])
 
