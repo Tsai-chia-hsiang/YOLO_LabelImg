@@ -104,13 +104,13 @@ labelImg
 __Please choose CreateML format before labeling__
 <img src="./doc/labelimg.png">
 ### ShortCut for LabelImg:
-press: __D__: next frame
-press: __A__: previous frame
-Ctrl+C : copy  bboxes
-Ctrl+V : past bboxes
-Ctrl+A : select all bboxes
+- press: __D__: next frame
+- press: __A__: previous frame
+- Ctrl+C : copy  bboxes
+- Ctrl+V : past bboxes
+- Ctrl+A : select all bboxes
 
-** after using ctrl+A - ctrl+C - ctrl+D to copy all the bboxes from
+** after using ctrl+A - ctrl+C - ctrl+V to copy all the bboxes from
 the previous frame to current frame, pressing __D__ __A__ to reflesh the 
 bbox annotations.
 
