@@ -31,7 +31,7 @@ The suggestion python version is above 3.10
     - --batch_size:
         - the number of images for detecting once, default is 180
     - --fps:
-        - wanted fps
+        - wanted fps, can set lower than your source video to down sampling the frames.
 - About device:
 
     - Due to the implementation of Ultralytics, please use ```CUDA_VISIBLE_DEVICES=want_device_id``` to control if you don't want to use the default device (cuda 0) 
