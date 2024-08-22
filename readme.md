@@ -18,14 +18,15 @@ Using ```yolov10l.pt``` to detect the vehicle-like objects from each frame of th
             - Each camera footage is in a folder that named after the camera ID.
     - --batch_size:
         - the number of images for detecting onces, default is 180
-
+    - --fps:
+        - wanted fps
 - About device:
 
     - Due to the implementation of Ultralytics, please use ```CUDA_VISIBLE_DEVICES=want_device_id``` to control if don't want use default device (cuda 0) 
 
 E.g.
 ```
-CUDA_VISIBLE_DEVICES=3 python detect.py --video_root /root/to/a/day/ --batch_size 180 
+CUDA_VISIBLE_DEVICES=3 python detect.py --video_root /root/to/a/day/ --batch_size 180 --fps 10
 ```
 
 It will generate a folder named according to video name for each video under ```/root/to/a/day/```
