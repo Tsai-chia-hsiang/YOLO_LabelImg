@@ -44,7 +44,7 @@ CUDA_VISIBLE_DEVICES=3 python detect.py --video_root /root/to/a/day/ --batch_siz
 It will generate a folder named according to the video name for each video under ```/root/to/a/day/```
 
 E.g. 
-video_root : ./dataset/0925/ :
+video_root : ./dataset :
 ```
 .
 ├──dataset/
@@ -102,7 +102,14 @@ labelImg
 ```
 
 __Please choose CreateML format before labeling__
-<img src="./doc/labelimg.png">
+
+<img src="./doc/labelimg.png"  width="800px"/>
+
+### Opening a directory to label
+<img src="./doc/labelimg_ins1.jpg">
+
+<img src="./doc/labelimg_ins2.jpg" width="450px"/> <img src="./doc/labelimg_ins2_1.jpg" width="450px"/>
+
 ### ShortCut for LabelImg:
 - press: __D__: next frame
 - press: __A__: previous frame
