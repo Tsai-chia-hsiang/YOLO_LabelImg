@@ -143,9 +143,10 @@ if __name__ == '__main__':
 
     for r in convert_root.iterdir():
         if r.is_dir():
-            # should contain only one subfolder for clip annotations
             srcs = [f for f in r.iterdir() if f.is_dir()]
-            for src in srcs:
+            for si in srcs:
+                # should contain only one subfolder for clip annotations
+                src = [_ for _ in si.iterdir()][0]
                 ci = src.parts
                 dst = to_root/ci[-3]/ci[-2]/ci[-1]
                 dst.mkdir(parents=True, exist_ok=True)

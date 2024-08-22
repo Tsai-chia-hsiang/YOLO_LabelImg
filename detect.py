@@ -3,16 +3,8 @@ from pathlib import Path
 import argparse
 from detect_lib.model import YOLO_Detector
 import time
+from path_tool import find_all_file
 
-def find_all_videos(root:os.PathLike, video_type:list)->list[Path]:
-    
-    ret = []
-    for dirs, _, files in os.walk(root, topdown=True):
-        if len(files) != 0:
-            for posfix in video_type:
-                ret += [_ for _ in Path(dirs).glob(f"*.{posfix}")]
-    
-    return ret
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -26,7 +18,7 @@ if __name__ == "__main__":
     
     args = parse_arguments()
 
-    all_videos_path = find_all_videos(root = args.video_root, video_type=["mp4"])
+    all_videos_path = find_all_file(root = args.video_root, ftype=["mp4"])
     
     detector = YOLO_Detector()
 
