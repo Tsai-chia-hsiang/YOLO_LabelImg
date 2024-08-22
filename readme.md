@@ -101,6 +101,17 @@ pip3 install labelImg
 labelImg
 ```
 
+### ShortCut for LabelImg:
+press: __D__: next frame
+press: __A__: previous frame
+Ctrl+C : copy  bboxes
+Ctrl+V : past bboxes
+Ctrl+A : select all bboxes
+
+** after using ctrl+A - ctrl+C - ctrl+D to copy all the bboxes from
+the previous frame to current frame, pressing __D__ __A__ to reflesh the 
+bbox annotations.
+
 - __The staff member's ID must remain consistent throughout their entire corresponding sequences.__
 
 ## The format conversion can be executed ONLY AFTER all staff have finished labeling.
