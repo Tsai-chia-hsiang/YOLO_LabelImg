@@ -178,13 +178,13 @@ This conversion will copy the file structure from `--staff_annotation_root` to `
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_yolo/  --imgsz 1920 1080
+python convert_tid.py --staff_annotation_root ./dataset --to_root ./dataset_yolo/  --imgsz 1920 1080
 ```
 
 Then, it will generate the following folders under this root:
 ```
 .
-├── dataset_yolotid/
+├── dataset_yolo/
 │    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├──  c1/
