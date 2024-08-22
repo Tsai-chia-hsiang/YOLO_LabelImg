@@ -101,6 +101,8 @@ pip3 install labelImg
 labelImg
 ```
 
+__Please choose CreateML format before labeling__
+<img src="./doc/labelimg.png">
 ### ShortCut for LabelImg:
 press: __D__: next frame
 press: __A__: previous frame
