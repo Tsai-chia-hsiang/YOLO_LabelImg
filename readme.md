@@ -95,6 +95,7 @@ Then it will generate the following folders under this root:
 ## Please use LabelImg with the above CreateML annotation files.
 [LabelImg](https://github.com/HumanSignal/labelImg.git)
 
+create a new enviroment for __python=3.8__
 ```
 pip3 install labelImg
 labelImg
