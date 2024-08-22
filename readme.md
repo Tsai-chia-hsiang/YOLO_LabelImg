@@ -109,7 +109,7 @@ Please note that frame ID starts from 0 but not 1 for each sequence.
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_mot2d/0925/ --format mot2d
+python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_mot2d/ --format mot2d
 ```
 
 Then it will generate the following folders under this root:
@@ -152,7 +152,7 @@ This conversion will copy the file structure from `--staff_annotation_root` to `
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/0925/  --imgsz 1920 1080
+python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_yolo/  --imgsz 1920 1080
 ```
 
 Then it will generate the following folders under this root:
