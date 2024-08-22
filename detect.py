@@ -18,6 +18,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--video_root", type=Path)
     parser.add_argument("--batch_size", type=int, default = 180)
+    parser.add_argument("--fps", type=int, default=None)
     args = parser.parse_args()
     return args
 
@@ -40,7 +41,8 @@ if __name__ == "__main__":
         detector(
             video_path, 
             dst_dir = frame_save_dir, 
-            batch_size = args.batch_size
+            batch_size = args.batch_size,
+            wanted_fps=args.fps
         )
         e = time.time()
         print(f"consuming : {e-s:.4f} sec")
