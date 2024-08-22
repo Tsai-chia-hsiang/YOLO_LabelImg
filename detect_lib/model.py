@@ -132,10 +132,14 @@ class YOLO_Detector():
         create_ML_notations = [None]*len(imgs)
  
         for i, xyxy in enumerate(results.xyxy):
-            create_ML_notations[i] = [{
-                "image": osp.split(img_names[i])[-1], 
-                "annotations":parse_xyxy(xyxy = xyxy)
-            }]
+            create_ML_notations[i] = [
+                [
+                    {
+                        "image": osp.split(img_names[i])[-1], 
+                        "annotations":parse_xyxy(xyxy = xyxy)
+                    }
+                ]
+            ]
 
         return create_ML_notations 
 
