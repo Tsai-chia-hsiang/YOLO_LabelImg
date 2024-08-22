@@ -147,7 +147,7 @@ if __name__ == '__main__':
             srcs = [f for f in r.iterdir() if f.is_dir()]
             for src in srcs:
                 ci = src.parts
-                dst = to_root/ci[-2]/ci[-1]
+                dst = to_root/ci[-3]/ci[-2]/ci[-1]
                 dst.mkdir(parents=True, exist_ok=True)
                 
                 if args.format == 'yolo':
