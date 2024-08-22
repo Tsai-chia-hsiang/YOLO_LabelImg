@@ -1,5 +1,4 @@
-*/__pycache__
-*/**/*.jpg 
+*/__pycache__ 
 */**/*.json
 */**/*.txt
 */**/*.mp4
