@@ -13,7 +13,7 @@ The suggestion python version is above 3.10
 
 1. install [torch](https://pytorch.org/get-started/locally/)
 2. install [ultralytics](https://docs.ultralytics.com/quickstart/)
-3. addtional packages:
+3. additional packages:
     - tqdm : pip install tqdm 
     - opencv-python : pip install opencv-python
 
@@ -26,22 +26,22 @@ The suggestion python version is above 3.10
     - --video_root :
         - The root of all the videos you want to detect. 
         - it refers to a day in our case.
-            - it contains all the footage of the cameras collected from that day.
-            - Each camera footage is in a folder that named after the camera ID.
+            - It contains all the footage collected by the cameras from that day.
+            - Each camera footage is in a folder named after the camera ID.
     - --batch_size:
-        - the number of images for detecting onces, default is 180
+        - the number of images for detecting once, default is 180
     - --fps:
         - wanted fps
 - About device:
 
-    - Due to the implementation of Ultralytics, please use ```CUDA_VISIBLE_DEVICES=want_device_id``` to control if don't want use default device (cuda 0) 
+    - Due to the implementation of Ultralytics, please use ```CUDA_VISIBLE_DEVICES=want_device_id``` to control if you don't want to use the default device (cuda 0) 
 
 E.g.
 ```
 CUDA_VISIBLE_DEVICES=3 python detect.py --video_root /root/to/a/day/ --batch_size 180 --fps 10
 ```
 
-It will generate a folder named according to video name for each video under ```/root/to/a/day/```
+It will generate a folder named according to the video name for each video under ```/root/to/a/day/```
 
 E.g. 
 video_root : ./dataset/0925/ :
@@ -59,7 +59,7 @@ video_root : ./dataset/0925/ :
 └──...
 ```
 
-Then it will generate the following folders under this root:
+Then, it will generate the following folders under this root:
 ```
 .
 ├── dataset/
@@ -95,7 +95,7 @@ Then it will generate the following folders under this root:
 ## Please use LabelImg with the above CreateML annotation files.
 [LabelImg](https://github.com/HumanSignal/labelImg.git)
 
-create a new enviroment for __python=3.8__
+Create a new environment for __python=3.8__
 ```
 pip3 install labelImg
 labelImg
@@ -111,7 +111,7 @@ __Please choose CreateML format before labeling__
 - Ctrl+A : select all bboxes
 
 ** after using ctrl+A - ctrl+C - ctrl+V to copy all the bboxes from
-the previous frame to current frame, pressing __D__ __A__ to reflesh the 
+the previous frame to current frame, pressing __D__ __A__ to refresh the 
 bbox annotations.
 
 - __The staff member's ID must remain consistent throughout their entire corresponding sequences.__
@@ -121,7 +121,7 @@ bbox annotations.
 # Format conversion
 
 - The staff track IDs must remain the same throughout the day.
-- since we only detect and track car ( single class ), the class ID is always 0 for each format
+- since we only detect and track cars ( single class ), the class ID is always 0 for each format
 
 The program ```convert_tid.py``` can convert CreateML notation to :
 
@@ -138,7 +138,7 @@ E.g.
 python convert_tid.py --staff_annotation_root ./dataset/ --to_root ./dataset_mot2d/ --format mot2d
 ```
 
-Then it will generate the following folders under this root:
+Then, it will generate the following folders under this root:
 ```
 .
 ├── dataset_mot2d/
@@ -165,15 +165,15 @@ python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 --to_root ./serial_number_trackid/ --imgsz height width
 ```
 
-converted annotation for each object : 
+Converted annotation for each object : 
 
 `0 normalized_center_x normalized_center_y normalized_width normalized_height serial_num_track_id`
 
 This conversion will copy the file structure from `--staff_annotation_root` to `--to_root`, and it ensures all annotation files retain the same prefix as their corresponding frames.
 
-- Please note that we just adding serial_num_track_id to yolo detection labels format
+- Please note that we are just adding serial_num_track_id to yolo detection labels format
     - If you want to use this to train YOLO detector, please remove the `serial_num_track_id` at the end of each notation by your own. 
-- About the corresponding images, we don't copy from `--staff_annotation_root` to `--to_root`. Therefore, you will need to move or copy those frames yourself if you want to train the YOLO detector.
+- About the corresponding images, we don't copy from `--staff_annotation_root` to `--to_root`. Therefore, you must move or copy those frames yourself if you want to train the YOLO detector.
 
 
 E.g. 
@@ -181,7 +181,7 @@ E.g.
 python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_yolo/  --imgsz 1920 1080
 ```
 
-Then it will generate the following folders under this root:
+Then, it will generate the following folders under this root:
 ```
 .
 ├── dataset_yolotid/
