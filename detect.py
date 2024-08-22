@@ -10,7 +10,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--video_root", type=Path)
     parser.add_argument("--batch_size", type=int, default = 180)
-    parser.add_argument("--fps", type=int, default=None)
+    parser.add_argument("--fps", type=int, default=30)
     args = parser.parse_args()
     return args
 
