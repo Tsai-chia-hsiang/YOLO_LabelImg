@@ -109,7 +109,7 @@ def createML_to_mot2d (src:Path, dst:Path, *args):
             top = coordinates['x'] - (width/2)
             left = coordinates['y'] - (height/2)      
             
-            print(f"{fid+1},{track_id},{top},{left},{width},{height},1,-1,-1,-1", file=fout)
+            print(f"{fid},{track_id},{top},{left},{width},{height},1,-1,-1,-1", file=fout)
     
     fout.close()
 

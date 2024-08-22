@@ -37,11 +37,11 @@ python detect.py --video_root /root/to/a/day/ --batch_size 180 --device cuda:0
 It will generate a folder named according to video name for each video under ```/root/to/a/day/```
 
 E.g. 
-video_root : ./dataset/1015/ :
+video_root : ./dataset/0925/ :
 ```
 .
 ├──dataset/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   └── c1.mp4
 │    │   ├── cam2/
@@ -56,7 +56,7 @@ Then it will generate the following folders under this root:
 ```
 .
 ├── dataset/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├── c1.mp4
 │    │   │   └── c1/
@@ -113,14 +113,14 @@ Sorry for the inconvenience.
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_yolotid/1015/  --imgsz 1080 1920
+python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_yolotid/0925/  --imgsz 1080 1920
 ```
 
 Then it will generate the following folders under this root:
 ```
 .
 ├── dataset_yolotid/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├──  c1/
 │    │   │       ├── c1_frame1.txt
@@ -145,18 +145,18 @@ Then it will generate the following folders under this root:
 python convert_tid.py --staff_annotation_root ./staff_bbox_annotation/
 --to_root ./serial_number_trackid/ __--format mot2d__ --imgsz height width 
 
-- frame ID starts from 1
+- Please notice that frame ID starts from 0 but not 1
 
 E.g. 
 ```
-python convert_tid.py --staff_annotation_root ./dataset/1015/ --to_root ./dataset_mot2d/1015/  --imgsz 1080 1920 --format mot2d
+python convert_tid.py --staff_annotation_root ./dataset/0925/ --to_root ./dataset_mot2d/0925/  --imgsz 1080 1920 --format mot2d
 ```
 
 Then it will generate the following folders under this root:
 ```
 .
 ├── dataset_mot2d/
-│    ├── 1015/
+│    ├── 0925/
 │    │   ├── cam1/
 │    │   │   ├──  c1/
 │    │   │       ├── c1.txt
