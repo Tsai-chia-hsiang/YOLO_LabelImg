@@ -111,6 +111,7 @@ __Please choose CreateML format before labeling__
 <img src="./doc/labelimg_ins2.jpg" width="450px"/> <img src="./doc/labelimg_ins2_1.jpg" width="450px"/>
 
 ### ShortCut for LabelImg:
+- press: __w__: draw a new bounding box
 - press: __D__: next frame
 - press: __A__: previous frame
 - Ctrl+C : copy  bboxes
